@@ -116,7 +116,6 @@
 									for (int b = 0; b < 3; b++) {
 										if (matrix[x + a][y + b][k] == 2 && (x + a != i || y + b != j)) {
 											if (x + a == i) {
-											//	System.out.println((x + a) + " " + (y + b) + " " + k);
 												rowclear(matrix, answer, clear, (x + a), y + b, k);
 												a = 3;
 												b = 3;
@@ -227,12 +226,10 @@
 
 	public int insert(int[][][] matrix, int[][] answer, boolean[][][] clear, int r, int c, int num) {
 		if (answer[r][c] > 0) {
-			//System.out.println("이미 등록된 좌표" + r + "행 " + c + "열" + num + " 에러");
 			return -1;
 		}
 		for (int a = 0; a < 9; a++) {
 			if (answer[r][a] == num || answer[a][c] == num) {
-				//System.out.println("열이나행에이미등록된숫자" + r + "행 " + c + "열" + num + " 에러");
 				return -1;
 			}
 		}
@@ -242,12 +239,10 @@
 		for (int a = 0; a < 3; a++) {
 			for (int b = 0; b < 3; b++) {
 				if (answer[x + a][y + b] == num) {
-					//System.out.println("스퀘어에이미등록된숫자" + r + "행 " + c + "열" + num + " 에러");
 					return -2;
 				}
 			}
 		}
-		// System.out.println(81-count+"번쨰로"+rin+"행 "+cin +"열에 "+num+" 인서트됨");
 		answer[r][c] = num;
 		for (int i = 0; i < 9; i++) {
 			if (i == num) {
@@ -287,7 +282,6 @@
 				if (x == 0) {
 					for (int k = 1; k < 10; k++) {
 						if (matrix[i][j][k] == 1) {
-							//System.out.println("(" + i + ", " + j + ") " + k + "경우의수1");
 							insert(matrix, answer, clear, i, j, k);
 							count(matrix,answer,clear);
 						}
@@ -317,20 +311,15 @@
 						if (duckmatrix[i][j][k] == duck && duckduck[i][j] == 0) {
 							if (duckCheck(duckduck, i, j, k)) {
 								
-								//System.out.println(duckNumber);
 								duckNumber++;
 								duckduck[i][j] = k;
-							//	System.out.println("덕덕" + duck + "들어간 오리는 " + i + " " + j + " " + k);
 								if (jisungMoo(duckduck, matrix,1)) {
-								///	System.out.println("무지성트루");
-								//	System.out.println("(" + i + ", " + j + ") " + k + "무지성결과값");
 									insert(matrix, answer, clear, i, j, k);
 									int duckmoo=check(matrix, answer, clear, dnums);
 									int tmp=duckmoo;
 									while (duckmoo > 0) {
 										tmp=duckmoo;
 										duckmoo=check(matrix, answer, clear, dnums);
-										//System.out.println(tmp+"템프");
 										if(duckmoo==tmp) {
 											break;
 										}
@@ -373,7 +362,6 @@
 							}
 						}
 					}
-				//	System.out.println(i + " " + j + " " + x);
 					return false;
 				}
 			}
