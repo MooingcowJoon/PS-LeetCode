@@ -6,28 +6,27 @@ class Solution {
             this.val=val;
         }
     }
-     int insert(Node node, int x){
-        if(node.val>=x){
-            node.val=x;
-            return 0;
-        }
-        if(node.child==null){
-            node.child=new Node(x);
-            return 1;
-        }
-        return insert(node.child,x)+1;
-    }
     public int lengthOfLIS(int[] nums) {
-        
-        int[] arr= nums;
-        
-             Node root = new Node(arr[0]);
+        int[] arr = nums;
+      Node root = new Node(arr[0]);
         int max=0;
+        Node node;
+        int a;
         for (int x: arr){
-            max=Math.max(max,insert(root,x));
+            a=1;
+            node = root;
+            while(node.val<x){
+                if(node.child==null){
+                    node.child=new Node(x);
+                }
+                node=node.child;
+                a++;
+            }
+                node.val=x;
+            max=Math.max(a,max);
         }
-        return max+1;
+    return max;
+    
+    }
     }
 
-
-}
